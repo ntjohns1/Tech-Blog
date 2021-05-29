@@ -1,6 +1,7 @@
 <div class="card">
-    <div class="card-header flex-row">
+    <div class="card-header flex-row justify-space-between">
         <h2>{{post.title}}</h2>
+        <p>{{post.user.username}}: {{post.formattedDate}}</p>
     </div>
     <div class="card-body">
         <p>
@@ -8,3 +9,17 @@
         <p>
     </div>
 </div>
+{{!-- if post has comments, render them in this div --}}
+
+<div class="card">
+    <h2 class="card-header">Add Comment</h2>
+    <div class="card-body">
+        <form id="new-comment-form">
+            <textarea name="comment-body" type="text" class="form-input" rows="3"></textarea>
+            <input name="post-id" type="hidden" value="{{post.id}}">
+            <input type="submit" class="btn">
+        </form>
+    </div>
+</div>
+
+<script src="/js/comment.js"></script>

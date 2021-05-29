@@ -26,7 +26,7 @@ router.get('/post/:id', async (req, res) => {
   try {
     // what should we pass here? we need to get some data passed via the request body (something.something.id?)
     // change the model below, but not the findByPk method.
-    const postData = await Post.findByPk(req.body.id, {
+    const postData = await Post.findByPk(req.params.id, {
       // helping you out with the include here, no changes necessary
       include: [
         User,
@@ -36,12 +36,14 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
-    console.log(postData); 
     if (postData) {
       // serialize the data
       const post = postData.get({ plain: true });
+      post.formattedDate = format_date(post.createdAt);
+
       // which view should we render for a single-post?
-      res.render('/single-post', { post });
+      console.log(post);
+      res.render('single-post', { post });
     } else {
       res.status(404).end();
     }

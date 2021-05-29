@@ -14,8 +14,6 @@ router.get('/', async (req, res) => {
     for (let i = 0; i < posts.length; i++) {
       posts[i].formattedDate = format_date(posts[i].createdAt);
     }
-    console.log(posts); 
-
     // we should render all the posts here
     res.render('all-posts', { posts });
   } catch (err) {
@@ -38,12 +36,12 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
-
+    console.log(postData); 
     if (postData) {
       // serialize the data
       const post = postData.get({ plain: true });
       // which view should we render for a single-post?
-      res.render('single-post', { post });
+      res.render('/single-post', { post });
     } else {
       res.status(404).end();
     }

@@ -39,8 +39,6 @@ router.get('/post/:id', async (req, res) => {
     if (postData) {
       // serialize the data
       const post = postData.get({ plain: true });
-      post.formattedDate = format_date(post.createdAt);
-
       // which view should we render for a single-post?
       console.log(post);
       res.render('single-post', { post });

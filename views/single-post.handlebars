@@ -10,13 +10,28 @@
     </div>
 </div>
 {{!-- if post has comments, render them in this div --}}
-
+{{#if post.comments.length}}
+<div>
+    <div class="card-header flex-row">
+        <h2>Comments</h2>
+    </div>
+    {{#each post.comments as |comment|}}
+    <div class="card-body">
+        <p>
+            {{comment.body}}
+        </p>
+        {{!-- user and date go here --}}
+        <p>{{comment.user}}</p>
+    </div>
+</div>
+{{/each}}
+{{/if}}
 <div class="card">
     <h2 class="card-header">Add Comment</h2>
     <div class="card-body">
         <form id="new-comment-form">
-            <textarea name="comment-body" type="text" class="form-input" rows="3"></textarea>
             <input name="post-id" type="hidden" value="{{post.id}}">
+            <textarea name="comment-body" type="text" class="form-input" rows="3"></textarea>
             <input type="submit" class="btn">
         </form>
     </div>

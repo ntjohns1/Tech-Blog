@@ -19,9 +19,6 @@ Comment.init(
         body: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isAlphanumeric: true,
-            },
         },
         postId: {
             type: DataTypes.INTEGER,

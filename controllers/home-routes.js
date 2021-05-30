@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models/');
-const { format_date } = require('../utils/helpers.js')
+const { format_date } = require('../utils/helpers.js');
 
 // get all posts for homepage
 router.get('/', async (req, res) => {
@@ -39,8 +39,11 @@ router.get('/post/:id', async (req, res) => {
     if (postData) {
       // serialize the data
       const post = postData.get({ plain: true });
+      post.formattedDate = format_date(post.createdAt);
+      for (let i = 0; i < post.comments.length; i++) {
+        post.comments[i].commentDate = format_date(post.comments[i].createdAt);
+      }
       // which view should we render for a single-post?
-      console.log(post);
       res.render('single-post', { post });
     } else {
       res.status(404).end();

@@ -41,11 +41,7 @@ router.get('/new', withAuth, (req, res) => {
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     // what should we pass here? we need to get some data passed via the request body
-    const postData = await Post.findByPk({
-      where: {
-        id: req.body.id,
-      },
-    });
+    const postData = await Post.findByPk(req.params.id);
 
     if (postData) {
       // serializing the data

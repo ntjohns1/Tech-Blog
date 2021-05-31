@@ -4,7 +4,7 @@ The Tech Blog is a place to discuss tech!
 
 ## Usage
 
-[Deployed Link](https://infinite-atoll-74792.herokuapp.com/)
+[Deployed Link](https://infinite-atoll-74792.herokuapp.com/)<br>
 [GitHub](https://infinite-atoll-74792.herokuapp.com/)
 
 <img src="./public/images/TheTechBlog.png" alt="Homepage View" width="auto" height="200">
